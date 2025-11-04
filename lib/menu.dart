@@ -11,19 +11,19 @@ class MyHomePage extends StatelessWidget {
      final List<ItemHomepage> items = [
     ItemHomepage("All product", Icons.inventory_2_outlined, "Kamu telah menekan tombol All Products", Colors.lightBlue.shade100),
     ItemHomepage("My Product",Icons.sell_outlined , "Kamu telah menekan tombol My Products", Colors.green.shade200),
-    ItemHomepage("Create Product", Icons.add_box_outlined, "Kamu telah menekan tombol Create Product", Colors.red.shade100),
+    ItemHomepage("Create Product", Icons.add_box_outlined, "Kamu telah menekan tombol Create Product", Colors.red),
   ];
 
 
     
-    
+
     @override
     Widget build(BuildContext context) {
     // Scaffold menyediakan struktur dasar halaman dengan AppBar dan body.
     return Scaffold(
       // AppBar adalah bagian atas halaman yang menampilkan judul.
       appBar: AppBar(
-        // Judul aplikasi "Football News" dengan teks putih dan tebal.
+        // Judul aplikasi "Indo Shop" dengan teks putih dan tebal.
         title: const Text(
           'Indo Shop',
           style: TextStyle(
