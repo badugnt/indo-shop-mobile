@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:indo_shop/productlist_form.dart';
+import 'package:indo_shop/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
     MyHomePage({super.key});
@@ -35,7 +36,7 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
 
-
+      drawer: LeftDrawer(),
       
       // Body halaman dengan padding di sekelilingnya.
       body: Padding(
@@ -165,6 +166,11 @@ class ItemCard extends StatelessWidget {
             ..showSnackBar(
               SnackBar(content: Text(item.message))
             );
+          if (item.name == "Create Product") {
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ProductFormPage()),
+            );
+          }
         },
         // Container untuk menyimpan Icon dan Text
         child: Container(
