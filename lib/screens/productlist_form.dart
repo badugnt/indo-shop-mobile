@@ -29,7 +29,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Center(child: Text('Form Tambah Produk')),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
       ),
       // TODO: Tambahkan drawer yang sudah dibuat di sini
@@ -158,6 +158,16 @@ class _ProductFormPageState extends State<ProductFormPage> {
                       _thumbnail = value!;
                     });
                   },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'URL Thumbnail tidak boleh kosong!';
+                    }
+                    final uri = Uri.tryParse(value);
+                    if (uri == null || !uri.isAbsolute) {
+                      return 'Masukkan URL yang valid!';
+                    }
+                    return null;
+                  },
                 ),
               ),
               Padding(
@@ -178,7 +188,9 @@ class _ProductFormPageState extends State<ProductFormPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.indigo),
+                      backgroundColor: MaterialStateProperty.all(
+                        Theme.of(context).colorScheme.secondary,
+                      ),
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {

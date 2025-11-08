@@ -34,7 +34,7 @@ NPM : 2406410494
 
 3. Apa fungsi dari widget MaterialApp? Jelaskan mengapa widget ini sering digunakan sebagai widget root.
    
-    Widget MaterialApp berfungsi sebagai widget root yang menyediakan berbagai fitur penting untuk aplikasi Flutter yang mengikuti desain Material. Fitur-fitur ini meliputi tema, navigasi, dan pengaturan lokal. MaterialApp sering digunakan sebagai widget root karena ia mengatur banyak aspek dasar dari aplikasi, seperti menyediakan konteks tema yang konsisten di seluruh aplikasi, mengelola rute navigasi, dan menangani berbagai konfigurasi penting lainnya. Dengan menggunakan MaterialApp, pengembang dapat dengan mudah membangun aplikasi yang sesuai dengan pedoman desain Material tanpa harus mengatur semuanya secara manual.
+    Widget MaterialApp berfungsi sebagai widget root yang menyediakan berbagai fitur penting untuk aplikasi Flutter yang mengikuti desain Material. Fitur-fitur ini meliputi tema, navigasi, dan pengaturan lokal. MaterialApp sering digunakan sebagai- widget root karena ia mengatur banyak aspek dasar dari aplikasi, seperti menyediakan konteks tema yang konsisten di seluruh aplikasi, mengelola rute navigasi, dan menangani berbagai konfigurasi penting lainnya. Dengan menggunakan MaterialApp, pengembang dapat dengan mudah membangun aplikasi yang sesuai dengan pedoman desain Material tanpa harus mengatur semuanya secara manual.
 
 4. Jelaskan perbedaan antara StatelessWidget dan StatefulWidget. Kapan kamu memilih salah satunya?
    
@@ -47,4 +47,67 @@ NPM : 2406410494
 6. Jelaskan konsep "hot reload" di Flutter dan bagaimana bedanya dengan "hot restart".
    
     Hot reload adalah fitur di Flutter yang memungkinkan pengembang untuk melihat perubahan kode secara instan tanpa harus memulai ulang aplikasi. Ketika hot reload dilakukan, Flutter hanya memperbarui bagian kode yang telah diubah dan mempertahankan status aplikasi saat ini, sehingga pengembang dapat dengan cepat melihat hasil perubahan tanpa kehilangan data atau status aplikasi. Hot restart, di sisi lain, memulai ulang seluruh aplikasi dari awal, menghapus semua status dan data yang ada. Hot restart digunakan ketika perubahan kode mempengaruhi struktur aplikasi secara signifikan atau ketika ada masalah yang tidak dapat diselesaikan dengan hot reload.
+</details>
+
+<details>
+<summary>Tugas 8</summary>
+  
+1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement() pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
+    Navigator.push() digunakan untuk menambahkan halaman baru ke tumpukan navigasi (navigation stack) tanpa menghapus halaman sebelumnya. Ini memungkinkan pengguna untuk kembali ke halaman sebelumnya dengan menggunakan tombol kembali (back button). Navigator.push() cocok digunakan ketika pengguna perlu menavigasi ke halaman baru tetapi masih ingin memiliki kemampuan untuk kembali ke halaman sebelumnya. Pada indo-shop, Navigator.push() digunakan saat akan melihat detail produk atau menambahkan produk baru, sehingga pengguna dapat kembali ke halaman utama setelah selesai.
+
+    Adapun Navigator.pushReplacement() digunakan untuk menggantikan halaman saat ini dengan halaman baru, menghapus halaman sebelumnya dari tumpukan navigasi. Ini berarti pengguna tidak dapat kembali ke halaman sebelumnya setelah navigasi dilakukan. Navigator.pushReplacement() cocok digunakan ketika halaman sebelumnya tidak lagi relevan atau diperluka. Pada indo-shop, Navigator.pushReplacement() dapat digunakan untuk laman login karena setelah berhasil masuk, pengguna tidak perlu kembali ke halaman login lagi.
+
+2. Bagaimana kamu memanfaatkan hierarchy widget seperti Scaffold, AppBar, dan Drawer untuk membangun struktur halaman yang konsisten di seluruh aplikasi?
+    Hierarchy widget seperti Scaffold, AppBar, dan Drawer digunakan untuk membangun struktur halaman yang konsisten di seluruh aplikasi dengan cara berikut:
+
+    - Scaffold: Scaffold berfungsi sebagai kerangka dasar untuk setiap halaman dalam aplikasi. Dengan menggunakan Scaffold, setiap halaman memiliki struktur yang seragam, termasuk area untuk AppBar di bagian atas, body di tengah, dan Drawer di sisi. Ini memastikan bahwa semua halaman memiliki tata letak yang konsisten dan mudah dinavigasi.
+
+    - AppBar: AppBar ditempatkan di dalam Scaffold dan menyediakan bilah aplikasi yang konsisten di bagian atas setiap halaman. AppBar dapat berisi judul halaman, ikon navigasi, dan tindakan lainnya. Dengan menggunakan AppBar yang seragam di seluruh halaman, pengguna dapat dengan mudah mengenali konteks halaman yang sedang mereka kunjungi.
+
+    - Drawer: Drawer juga ditempatkan di dalam Scaffold dan menyediakan menu navigasi samping yang dapat diakses dari mana saja dalam aplikasi. Dengan menggunakan Drawer yang konsisten di seluruh halaman, pengguna dapat dengan mudah berpindah antar bagian aplikasi tanpa kehilangan konteks.
+
+    Secara keseluruhan, Scaffold menciptakan struktur tata letak yang konsisten di seluruh halaman aplikasi. Komponen AppBar berfungsi sebagai header yang seragam, menampilkan judul serta tombol aksi dengan tampilan yang sesuai tema aplikasi. Sementara itu, Drawer digunakan sebagai menu navigasi samping yang didefinisikan satu kali.  Dengan memanfaatkan hierarchy widget ini, aplikasi menjadi lebih terstruktur, mudah dinavigasi, dan memberikan pengalaman pengguna yang konsisten.
+
+3. Dalam konteks desain antarmuka, apa kelebihan menggunakan layout widget seperti Padding, SingleChildScrollView, dan ListView saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
+
+    Kelebihan menggunakan padding sebagai layout widget adalah memberikan ruang kosong di sekitar elemen-elemen form, sehingga tampilan menjadi lebih rapi dan mudah dibaca. Padding membantu memisahkan elemen-elemen form satu sama lain, menghindari kesan berdesakan, dan meningkatkan estetika antarmuka pengguna. Contohnya, dalam aplikasi indo-shop, padding digunakan di sekitar teks input dan tombol untuk memberikan jarak yang cukup antara elemen-elemen tersebut.
+    ex code:
+    ''dart
+    Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    hintText: "Judul Produk",
+                    labelText: "Judul Produk",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                ),
+              ),
+
+    Kelebihan menggunakan SingleChildScrollView adalah memungkinkan konten form yang panjang untuk digulir (scroll) secara vertikal atau horizontal. Ini sangat berguna ketika form memiliki banyak elemen yang tidak muat di layar sekaligus. Dengan SingleChildScrollView, pengguna dapat dengan mudah mengakses semua elemen form tanpa harus memperkecil ukuran tampilan. Contohnya, dalam aplikasi indo-shop, SingleChildScrollView digunakan untuk membungkus seluruh form penambahan produk agar pengguna dapat menggulir ke bawah untuk melihat semua input yang diperlukan.
+    ex code:
+    ''dart
+    SingleChildScrollView(
+          child: Column(
+            children: [
+              // elemen-elemen form
+            ],
+          ),
+        ),
+
+    kelebihan menggunakan ListView adalah memungkinkan penampilan daftar elemen form yang dinamis dan dapat digulir. Listview adalah alternatif dari SingleChildScrollView karena dapat menampilkan daftar elemen yang panjang dengan lebih efisien. ListView secara otomatis mengelola memori dan hanya membangun elemen yang terlihat di layar, sehingga lebih cocok untuk daftar yang besar. Aplikasi indo-shop terkini tidak menggunakan ListView sebagai layout widget di form, namun ListView dapat digunakan untuk menggantikan SingleChildScrollView pada form penambahan produk.
+    ex code:
+    ''dart
+    ListView(
+        children: [
+            // elemen-elemen form
+        ],
+        ),
+        
+4. Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
+
+    Untuk menyesuaikan warna tema aplikasi Football Shop, saya menggunakan ThemeData di Flutter. Pada main.dart, saya mendefinisikan warna primer dan sekunder. Kemudian, saya menerapkan tema ini ke MaterialApp sehingga seluruh aplikasi menggunakan skema warna yang konsisten.
+    
 </details>
