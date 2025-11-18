@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:indo_shop/screens/menu.dart';
 import 'package:indo_shop/screens/productlist_form.dart';
+import 'package:indo_shop/screens/product_entry_list.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -10,36 +11,34 @@ class LeftDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-             const DrawerHeader(
-            
-              decoration: BoxDecoration(color: Colors.blue),
-              child: Column(
-                children: [
-                  Text(
-                    'Indo Shop',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+          const DrawerHeader(
+            decoration: BoxDecoration(color: Colors.blue),
+            child: Column(
+              children: [
+                Text(
+                  'Indo Shop',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                  Padding(padding: EdgeInsets.all(10)),
-                  Text(
-                    "Seluruh keperluan sepak bola yang anda butuhkan ada di sini!",
-                    // TODO: Tambahkan gaya teks dengan center alignment, font ukuran 15, warna putih, dan weight biasa
-                    textAlign: TextAlign.center,
-                    style: TextStyle( 
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                    ),
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                Text(
+                  "Seluruh keperluan sepak bola yang anda butuhkan ada di sini!",
+                  // TODO: Tambahkan gaya teks dengan center alignment, font ukuran 15, warna putih, dan weight biasa
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontWeight: FontWeight.normal,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-       
-        
+          ),
+
           // TODO: Bagian routing
           ListTile(
             leading: const Icon(Icons.home_outlined),
@@ -67,22 +66,19 @@ class LeftDrawer extends StatelessWidget {
               );
             },
           ),
-          // TODO: Buat ListTile baru untuk ke halaman melihat news
-          // ListTile(
-          //   leading: const Icon(Icons.article),
-          //   title: const Text('View News'),
-          //   // Bagian redirection ke NewsListPage
-          //   onTap: () {
-          //     /*
-          //     TODO: Buatlah routing ke NewsListPage di sini,
-          //     setelah halaman NewsListPage sudah dibuat.
-          //     */
-          //     Navigator.pushReplacement(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => NewsListPage()),
-          //     );
-          //   },
-          // ),
+          ListTile(
+            leading: const Icon(Icons.add_reaction_rounded),
+            title: const Text('Product List'),
+            onTap: () {
+              // Route to news list page
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProductEntryListPage(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

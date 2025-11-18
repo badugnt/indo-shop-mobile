@@ -111,3 +111,16 @@ NPM : 2406410494
     Untuk menyesuaikan warna tema aplikasi Football Shop, saya menggunakan ThemeData di Flutter. Pada main.dart, saya mendefinisikan warna primer dan sekunder. Kemudian, saya menerapkan tema ini ke MaterialApp sehingga seluruh aplikasi menggunakan skema warna yang konsisten.
     
 </details>
+<details>
+<summary>Tugas 9</summary>
+1. Jelaskan mengapa kita perlu membuat model Dart saat mengambil/mengirim data JSON? Apa konsekuensinya jika langsung memetakan Map<String, dynamic> tanpa model (terkait validasi tipe, null-safety, maintainability)?
+    
+      Kita perlu membuat model Dart saat mengambil/mengirim data JSON untuk memastikan bahwa data yang diterima atau dikirim sesuai dengan struktur yang diharapkan. Model Dart memberikan validasi tipe yang kuat, sehingga kita dapat menangani data dengan lebih aman dan menghindari kesalahan tipe data. Dengan menggunakan model, kita juga dapat memanfaatkan fitur null-safety di Dart, yang membantu mencegah kesalahan runtime akibat nilai null. Selain itu, model Dart meningkatkan maintainability kode karena struktur data menjadi lebih jelas dan mudah dipahami. Jika kita langsung memetakan Map<String, dynamic> tanpa model, kita berisiko menghadapi masalah validasi tipe, kesulitan dalam menangani nilai null, dan kode yang sulit dipelihara karena kurangnya struktur yang jelas.
+
+ 2. Apa fungsi package http dan CookieRequest dalam tugas ini? Jelaskan perbedaan peran http vs CookieRequest.
+ Jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+ Jelaskan konfigurasi konektivitas yang diperlukan agar Flutter dapat berkomunikasi dengan Django. Mengapa kita perlu menambahkan 10.0.2.2 pada ALLOWED_HOSTS, mengaktifkan CORS dan pengaturan SameSite/cookie, dan menambahkan izin akses internet di Android? Apa yang akan terjadi jika konfigurasi tersebut tidak dilakukan dengan benar?
+ Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.
+ Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+</details>
