@@ -6,21 +6,28 @@ import 'package:indo_shop/widgets/product_entry_card.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 
-class ProductEntryListPage extends StatefulWidget {
-  const ProductEntryListPage({super.key});
+class MyProductEntryListPage extends StatefulWidget {
+  const MyProductEntryListPage({super.key});
 
   @override
-  State<ProductEntryListPage> createState() => _ProductEntryListPageState();
+  State<MyProductEntryListPage> createState() => _MyProductEntryListPageState();
 }
 
-class _ProductEntryListPageState extends State<ProductEntryListPage> {
-  Future<List<ProductEntry>> fetchProduct(CookieRequest request) async {
-    // TODO: Replace the URL with your app's URL and don't forget to add a trailing slash (/)!
-    // To connect Android emulator with Django on localhost, use URL http://10.0.2.2/
-    // If you using chrome,  use URL http://localhost:8000
+class _MyProductEntryListPageState extends State<MyProductEntryListPage> {
+  Future<List<ProductEntry>> fetchMyProduct(CookieRequest request) async {
+    // PENTING: Ganti URL ini dengan endpoint Django kamu yang mengembalikan
+    // JSON produk berdasarkan user yang sedang login (request.user)
+        print('--- [DEBUG] MULAI FETCH MY PRODUCT ---');
+    
+    // 1. Cek Status Login di Mata Flutter
+    print('[DEBUG] Status request.loggedIn: ${request.loggedIn}');
+    print('[DEBUG] Cookies yang tersimpan: ${request.cookies}');
+    print('[DEBUG] Headers yang akan dikirim: ${request.headers}');
 
-    final response = await request.get('http://localhost:8000/json/');
-
+    
+    final response =
+        await request.get('http://localhost:8000/json/?filter=my');
+  print('[DEBUG] Response mentah dari server: $response');
     // Decode response to json format
     var data = response;
 
@@ -38,19 +45,23 @@ class _ProductEntryListPageState extends State<ProductEntryListPage> {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Scaffold(
-      appBar: AppBar(title: const Text('Product Entry List')),
+      appBar: AppBar(
+        title: const Text('My Products'),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
+      ),
       drawer: const LeftDrawer(),
       body: FutureBuilder(
-        future: fetchProduct(request),
+        future: fetchMyProduct(request),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
             return const Center(child: CircularProgressIndicator());
           } else {
-            if (!snapshot.hasData) {
+            if (!snapshot.hasData || snapshot.data!.isEmpty) {
               return const Column(
                 children: [
                   Text(
-                    'There are no product in Indo Shop yet.',
+                    'You have not added any products yet.',
                     style: TextStyle(fontSize: 20, color: Color(0xff59A5D8)),
                   ),
                   SizedBox(height: 8),

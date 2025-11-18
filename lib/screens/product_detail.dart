@@ -13,7 +13,7 @@ class ProductDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product Detail'),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -23,7 +23,7 @@ class ProductDetailPage extends StatelessWidget {
             // Thumbnail image
             if (products.thumbnail.isNotEmpty)
               Image.network(
-                'http://127.0.0.1:8000/proxy-image/?url=${Uri.encodeComponent(products.thumbnail)}',
+                'http://localhost:8000/proxy-image/?url=${Uri.encodeComponent(products.thumbnail)}',
                 width: double.infinity,
                 height: 250,
                 fit: BoxFit.cover,

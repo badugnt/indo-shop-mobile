@@ -36,7 +36,7 @@ class ProductEntryCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(6),
                         child: Image.network(
                           // GANTI URL ini ke 10.0.2.2 jika pakai emulator
-                          'http://127.0.0.1:8000/proxy-image/?url=${Uri.encodeComponent(product.thumbnail)}',
+                          'http://localhost:8000/proxy-image/?url=${Uri.encodeComponent(product.thumbnail)}',
                           height: 150,
                           width: double.infinity,
                           fit: BoxFit.cover,
@@ -78,17 +78,34 @@ class ProductEntryCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 6),
-                Icon( 
-                  Icons.price_change_outlined,
-                  size: 16,
-                  color: Colors.grey[600],
-                ),
-                Text(
-                  product.price.toString(),
-                  style: const TextStyle(
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                // Icon(
+                //   Icons.price_change_outlined,
+                //   size: 16,
+                //   color: Colors.grey[600],
+                // ),
+                // Text(
+                //   product.price.toString(),
+                //   style: const TextStyle(
+                //     fontSize: 12.0,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.price_change_outlined,
+                      size: 16,
+                      color: Colors.grey[600],
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      'Rp ${product.price.toString()} ',
+                      style: const TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 6),
                 // Category

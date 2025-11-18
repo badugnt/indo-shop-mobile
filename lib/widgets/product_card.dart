@@ -6,14 +6,14 @@ import 'package:indo_shop/screens/menu.dart';
 import 'package:indo_shop/screens/login.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-
+import 'package:indo_shop/screens/myproduct_entry_list.dart';
 
 class ItemCard extends StatelessWidget {
   // Menampilkan kartu dengan ikon dan nama.
 
-  final ItemHomepage item; 
+  final ItemHomepage item;
 
-  const ItemCard(this.item, {super.key}); 
+  const ItemCard(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +30,24 @@ class ItemCard extends StatelessWidget {
           // Menampilkan pesan SnackBar saat kartu ditekan.
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text(item.message))
-            );
+            ..showSnackBar(SnackBar(content: Text(item.message)));
           if (item.name == "Create Product") {
-            Navigator.push(context,
+            Navigator.push(
+              context,
               MaterialPageRoute(builder: (context) => ProductFormPage()),
             );
-          }
-           else if (item.name == "All product") {
+          } else if (item.name == "All product") {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => const ProductEntryListPage(),
+              ),
+            );
+          } else if (item.name == "My Product") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MyProductEntryListPage(),
               ),
             );
           }
@@ -82,11 +87,7 @@ class ItemCard extends StatelessWidget {
               // Menyusun ikon dan teks di tengah kartu.
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
+                Icon(item.icon, color: Colors.white, size: 30.0),
                 const Padding(padding: EdgeInsets.all(3)),
                 Text(
                   item.name,
@@ -100,5 +101,4 @@ class ItemCard extends StatelessWidget {
       ),
     );
   }
-
 }

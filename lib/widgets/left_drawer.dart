@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:indo_shop/screens/menu.dart';
 import 'package:indo_shop/screens/productlist_form.dart';
 import 'package:indo_shop/screens/product_entry_list.dart';
+import 'package:indo_shop/screens/myproduct_entry_list.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -12,7 +13,7 @@ class LeftDrawer extends StatelessWidget {
       child: ListView(
         children: [
           const DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blue),
+            decoration: BoxDecoration(color: Color.fromARGB(255, 254, 174, 150)),
             child: Column(
               children: [
                 Text(
@@ -52,13 +53,13 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.post_add),
+            leading: const Icon(Icons.add_box_outlined),
             title: const Text('Add Product'),
             // Bagian redirection ke NewsFormPage
             onTap: () {
               /*
-    TODO: Buatlah routing ke NewsFormPage di sini,
-    setelah halaman NewsFormPage sudah dibuat.
+    TODO: Buatlah routing ke ProductFormPage di sini,
+    setelah halaman ProductFormPage sudah dibuat.
     */
               Navigator.pushReplacement(
                 context,
@@ -67,14 +68,27 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.add_reaction_rounded),
-            title: const Text('Product List'),
+            leading: const Icon(Icons.inventory_2_outlined),
+            title: const Text('All Product'),
             onTap: () {
               // Route to news list page
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ProductEntryListPage(),
+                ),
+              );
+            },
+          ),
+                    ListTile(
+            leading: const Icon(Icons.sell_outlined ),
+            title: const Text('My Product'),
+            onTap: () {
+              // Route to news list page
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MyProductEntryListPage(),
                 ),
               );
             },

@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         return request;
       },
       child: MaterialApp(
-        title: 'Football News',
+        title: 'Indo Shop',
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -37,9 +37,13 @@ class MyApp extends StatelessWidget {
           //
           // This works for code too, not just values: Most code changes can be
           // tested with just a hot reload.
-            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.lightBlue)
-          .copyWith(secondary: Colors.blueAccent[400]),
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red)
+              .copyWith(
+                primary: const Color.fromARGB(255, 254, 174, 150),
+              secondary: const Color.fromARGB(255, 157, 216, 244),
+              ),
         ),
+
         home: const LoginPage(),
       ),
     );
