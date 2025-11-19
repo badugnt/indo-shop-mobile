@@ -4,23 +4,35 @@ import 'package:indo_shop/widgets/left_drawer.dart';
 import 'package:indo_shop/widgets/product_card.dart';
 
 class MyHomePage extends StatelessWidget {
-    MyHomePage({super.key});
-            
+  MyHomePage({super.key});
 
-    final String nama = "Edlyn Marva"; //nama
-    final String npm = "2406410494"; //npm
-    final String kelas = "B"; //kelas
-     final List<ItemHomepage> items = [
-    ItemHomepage("All product", Icons.inventory_2_outlined, "Kamu telah menekan tombol All Products", Colors.lightBlue.shade100),
-    ItemHomepage("My Product",Icons.sell_outlined , "Kamu telah menekan tombol My Products", Colors.green.shade200),
-    ItemHomepage("Create Product", Icons.add_box_outlined, "Kamu telah menekan tombol Create Product", Colors.red),
+  final String nama = "Edlyn Marva"; //nama
+  final String npm = "2406410494"; //npm
+  final String kelas = "B"; //kelas
+  final List<ItemHomepage> items = [
+    ItemHomepage(
+      "All product",
+      Icons.inventory_2_outlined,
+      "Kamu telah menekan tombol All Products",
+      Colors.lightBlue.shade100,
+    ),
+    ItemHomepage(
+      "My Product",
+      Icons.sell_outlined,
+      "Kamu telah menekan tombol My Products",
+      Colors.green.shade200,
+    ),
+    ItemHomepage(
+      "Create Product",
+      Icons.add_box_outlined,
+      "Kamu telah menekan tombol Create Product",
+      Colors.red,
+    ),
+    ItemHomepage("Logout", Icons.logout, "Kamu telah menekan tombol Logout", const Color.fromARGB(255, 255, 174, 22)),
   ];
 
-
-    
-
-    @override
-    Widget build(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     // Scaffold menyediakan struktur dasar halaman dengan AppBar dan body.
     return Scaffold(
       // AppBar adalah bagian atas halaman yang menampilkan judul.
@@ -28,17 +40,14 @@ class MyHomePage extends StatelessWidget {
         // Judul aplikasi "Indo Shop" dengan teks putih dan tebal.
         title: const Text(
           'Indo Shop',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         // Warna latar belakang AppBar diambil dari skema warna tema aplikasi.
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
 
       drawer: LeftDrawer(),
-      
+
       // Body halaman dengan padding di sekelilingnya.
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -60,39 +69,42 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 16.0),
 
             // Menempatkan widget berikutnya di tengah halaman.
-            Center(
-              child: Column(
-                // Menyusun teks dan grid item secara vertikal.
-
-                children: [
-                  // Menampilkan teks sambutan dengan gaya tebal dan ukuran 18.
-                  const Padding(
-                    padding: EdgeInsets.only(top: 16.0),
-                    child: Text(
-                      'Selamat datang di Indo Shop Mobile ',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
+            Expanded(
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Column(
+                    // Menyusun teks dan grid item secara vertikal.
+                    children: [
+                      // Menampilkan teks sambutan dengan gaya tebal dan ukuran 18.
+                      const Padding(
+                        padding: EdgeInsets.only(top: 16.0),
+                        child: Text(
+                          'Selamat datang di Indo Shop Mobile ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
 
-                  // Grid untuk menampilkan ItemCard dalam bentuk grid 3 kolom.
-                  GridView.count(
-                    primary: true,
-                    padding: const EdgeInsets.all(20),
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    crossAxisCount: 3,
-                    // Agar grid menyesuaikan tinggi kontennya.
-                    shrinkWrap: true,
+                      // Grid untuk menampilkan ItemCard dalam bentuk grid 3 kolom.
+                      GridView.count(
+                        primary: true,
+                        padding: const EdgeInsets.all(20),
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        crossAxisCount: 3,
+                        // Agar grid menyesuaikan tinggi kontennya.
+                        shrinkWrap: true,
 
-                    // Menampilkan ItemCard untuk setiap item dalam list items.
-                    children: items.map((ItemHomepage item) {
-                      return ItemCard(item);
-                    }).toList(),
+                        // Menampilkan ItemCard untuk setiap item dalam list items.
+                        children: items.map((ItemHomepage item) {
+                          return ItemCard(item);
+                        }).toList(),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ],
@@ -105,8 +117,8 @@ class MyHomePage extends StatelessWidget {
 class InfoCard extends StatelessWidget {
   // Kartu informasi yang menampilkan title dan content.
 
-  final String title;  // Judul kartu.
-  final String content;  // Isi kartu.
+  final String title; // Judul kartu.
+  final String content; // Isi kartu.
 
   const InfoCard({super.key, required this.title, required this.content});
 
@@ -117,15 +129,14 @@ class InfoCard extends StatelessWidget {
       elevation: 2.0,
       child: Container(
         // Mengatur ukuran dan jarak di dalam kartu.
-        width: MediaQuery.of(context).size.width / 3.5, // menyesuaikan dengan lebar device yang digunakan.
+        width:
+            MediaQuery.of(context).size.width /
+            3.5, // menyesuaikan dengan lebar device yang digunakan.
         padding: const EdgeInsets.all(16.0),
         // Menyusun title dan content secara vertikal.
         child: Column(
           children: [
-            Text(
-              title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
+            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 8.0),
             Text(content),
           ],
@@ -134,11 +145,12 @@ class InfoCard extends StatelessWidget {
     );
   }
 }
-class ItemHomepage {
- final String name;
- final IconData icon;
- final String message;
- final Color color;
 
- ItemHomepage(this.name, this.icon, this.message, this.color);
+class ItemHomepage {
+  final String name;
+  final IconData icon;
+  final String message;
+  final Color color;
+
+  ItemHomepage(this.name, this.icon, this.message, this.color);
 }
